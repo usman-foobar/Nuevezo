@@ -48,27 +48,6 @@ module.exports.approvePartnerRegistration = async (req, res) => {
   }
 };
 
-module.exports.getAllCustomers = async (req, res) => {
-  try {
-    const allCustomers = await db.query(
-      "SELECT id, user_id, name, email, approved FROM customers WHERE approved = $1",
-      [req.params.approvalStatus]
-    );
-
-    return res.status(200).json({
-      success: true,
-      customerList: allCustomers.rows,
-    });
-  } catch (error) {
-    console.error("Error occurred while fetching customers", error);
-    return res.status(500).json({
-      success: false,
-      message: "Internal server error",
-    });
-  }
-};
-
-
 module.exports.approveCustomerRegistration = async (req, res) => {
   try {
     const registeredCustomer = await db.query(

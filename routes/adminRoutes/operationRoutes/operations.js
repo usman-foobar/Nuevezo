@@ -1,5 +1,6 @@
 const express = require("express");
 const operationsController = require("../../../controllers/adminController/operationsController");
+const { getAllCustomers } = require("../../../controllers/partnerController/operationsController");
 const router = express.Router();
 
 router.get(
@@ -14,7 +15,7 @@ router.patch(
 
 router.get(
   "/fetch-all-customers/:approvalStatus",
-  operationsController.getAllCustomers
+  getAllCustomers
 );
 
 router.patch(
