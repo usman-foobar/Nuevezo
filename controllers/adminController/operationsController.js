@@ -51,7 +51,7 @@ module.exports.approvePartnerRegistration = async (req, res) => {
 module.exports.getAllCustomers = async (req, res) => {
   try {
     const allCustomers = await db.query(
-      "SELECT id, name, email, approved FROM customers WHERE approved = $1",
+      "SELECT id, user_id, name, email, approved FROM customers WHERE approved = $1",
       [req.params.approvalStatus]
     );
 
@@ -72,7 +72,7 @@ module.exports.getAllCustomers = async (req, res) => {
 module.exports.approveCustomerRegistration = async (req, res) => {
   try {
     const registeredCustomer = await db.query(
-      "UPDATE customers sET approved = $1 WHERE id = $2 AND approved = false returning id, name, email, role, approved",
+      "UPDATE customers sET approved = $1 WHERE id = $2 AND approved = false returning id, user_id, name, email, approved",
       [true, req.params.customerId]
     );
 

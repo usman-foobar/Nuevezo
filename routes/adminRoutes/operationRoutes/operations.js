@@ -13,8 +13,8 @@ router.patch(
 );
 
 router.get(
-  "fetch-all-customers/:approvalStatus",
-  operationsController.getAllPartners
+  "/fetch-all-customers/:approvalStatus",
+  operationsController.getAllCustomers
 );
 
 router.patch(
