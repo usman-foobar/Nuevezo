@@ -3,7 +3,7 @@ const operationsController = require("../../../controllers/adminController/opera
 const router = express.Router();
 
 router.get(
-  "/fetch-all-partners/:registrationStatus",
+  "/fetch-all-partners/:approvalStatus",
   operationsController.getAllPartners
 );
 
@@ -12,4 +12,13 @@ router.patch(
   operationsController.approvePartnerRegistration
 );
 
+router.get(
+  "fetch-all-customers/:approvalStatus",
+  operationsController.getAllPartners
+);
+
+router.patch(
+  "/approve-customer-req/:customerId",
+  operationsController.approveCustomerRegistration
+);
 module.exports = router;
