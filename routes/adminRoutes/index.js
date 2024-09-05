@@ -6,6 +6,7 @@ const {
   verifyAdminAccessToken,
 } = require("../../authentication/jwtValidation");
 const operationRoutes = require("./operationRoutes/operations");
+const productRoutes = require("./productRoutes/products");
 
 router.use("/login", loginRoutes);
 router.use(
@@ -13,5 +14,7 @@ router.use(
   verifyAdminAccessToken,
   operationRoutes
 );
+
+router.use("/products", verifyAdminAccessToken, productRoutes);
 
 module.exports = router;
