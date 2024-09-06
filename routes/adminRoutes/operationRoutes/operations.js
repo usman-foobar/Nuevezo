@@ -5,7 +5,7 @@ const { fetchDeals } = require("../../../controllers/partnerController/dealsCont
 const router = express.Router();
 
 router.get(
-  "/fetch-all-partners/:approvalStatus",
+  "/fetch-all-partners",
   operationsController.getAllPartners
 );
 
@@ -15,7 +15,7 @@ router.patch(
 );
 
 router.get(
-  "/fetch-all-customers/:approvalStatus",
+  "/fetch-all-customers/",
   getAllCustomers
 );
 

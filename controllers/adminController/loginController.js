@@ -41,7 +41,7 @@ module.exports.adminLogin = async (req, res) => {
     return res.status(200).json({
       success: true,
       access_token: adminAccessToken,
-      data: { id, name, email, role },
+      user: { id, name, email, role },
     });
   } catch (error) {
     console.error("Error occurred while logging in Admin", error);

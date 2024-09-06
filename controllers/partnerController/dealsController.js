@@ -14,7 +14,7 @@ module.exports.createDeal = async (req, res) => {
 
     const {
       rows: [customer],
-    } = await db.query("SELECT * FROM customers WHERE id=$1", [customerId]);
+    } = await db.query("SELECT * FROM customers WHERE id=$1 AND approved = true", [customerId]);
 
     if (!customer) {
       return res.status(404).json({
@@ -74,6 +74,7 @@ module.exports.createDeal = async (req, res) => {
 
     return res.status(200).json({
       success: true,
+      message: "Deal created successfully",
       newDeal: newDeal.rows[0],
     });
   } catch (error) {

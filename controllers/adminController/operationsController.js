@@ -4,8 +4,8 @@ const { USER_ROLE } = require("../../constants/userRoles");
 module.exports.getAllPartners = async (req, res) => {
   try {
     const allPartners = await db.query(
-      "SELECT id, name, email, approved FROM users WHERE role = $1 AND approved = $2",
-      [USER_ROLE.PARTNER, req.params.approvalStatus]
+      "SELECT id, name, email, approved FROM users WHERE role = $1",
+      [USER_ROLE.PARTNER]
     );
 
     return res.status(200).json({
@@ -37,6 +37,7 @@ module.exports.approvePartnerRegistration = async (req, res) => {
 
     return res.status(200).json({
       success: true,
+      message: "Partner approve successfully",
       updatedPartner: registeredPartner.rows[0],
     });
   } catch (error) {
@@ -64,6 +65,7 @@ module.exports.approveCustomerRegistration = async (req, res) => {
 
     return res.status(200).json({
       success: true,
+      message: "Customer Approve successfully",
       updatedCustomer: registeredCustomer.rows[0],
     });
   } catch (error) {
@@ -91,6 +93,7 @@ module.exports.approveDeal = async (req, res) => {
 
     return res.status(200).json({
       success: true,
+      message: "Deal approve successfully",
       deal: deal.rows[0],
     });
   } catch (error) {
