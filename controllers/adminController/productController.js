@@ -20,6 +20,7 @@ module.exports.createProduct = async (req, res) => {
 
     return res.status(200).json({
       success: true,
+      message: "Product created successfully",
       newProduct: newProduct.rows[0],
     });
   } catch (error) {

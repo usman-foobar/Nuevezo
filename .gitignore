@@ -2,3 +2,4 @@
 .env
 .sql
 /public/uploads
+.DS_Store

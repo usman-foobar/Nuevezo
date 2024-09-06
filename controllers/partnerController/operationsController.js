@@ -7,7 +7,6 @@ module.exports.createCustomer = async (req, res) => {
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    console.log(req.body);
 
     const customer = await db.query(
       "sELECT * FROM customers WHERE email = $1",
@@ -27,6 +26,7 @@ module.exports.createCustomer = async (req, res) => {
 
     return res.status(200).json({
       success: true,
+      message: "Customer created successfully",
       newCustomer: newCustomer.rows[0]
     });
   } catch (error) {
@@ -41,8 +41,7 @@ module.exports.createCustomer = async (req, res) => {
 module.exports.getAllCustomers = async (req,res) => {
   try {
     const allCustomers = await db.query(
-      "SELECT id, user_id, name, email, approved FROM customers WHERE approved = $1",
-      [req.params.approvalStatus]
+      "SELECT id, user_id, name, email, approved FROM customers"
     );
 
     return res.status(200).json({
