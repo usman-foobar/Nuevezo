@@ -7,7 +7,6 @@ module.exports.createCustomer = async (req, res) => {
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    console.log(req.body);
 
     const customer = await db.query(
       "sELECT * FROM customers WHERE email = $1",
